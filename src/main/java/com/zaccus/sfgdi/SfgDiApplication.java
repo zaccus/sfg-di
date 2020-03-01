@@ -1,9 +1,6 @@
 package com.zaccus.sfgdi;
 
-import com.zaccus.sfgdi.controllers.ConstructorInjectedController;
-import com.zaccus.sfgdi.controllers.MyController;
-import com.zaccus.sfgdi.controllers.PropertyInjectedController;
-import com.zaccus.sfgdi.controllers.SetterInjectedController;
+import com.zaccus.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,10 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+
 		MyController controller = (MyController) ctx.getBean("myController");
 //		String greeting = controller.sayHello();
 		System.out.println("----- Primary Bean");
